@@ -1,0 +1,12 @@
+<repositories encoding="unicode" version="1.1">
+  <repo priority="50" quality="experimental">
+    <name>dfangtoo-overlay</name>
+    <description>my personal overlay</description>
+    <homepage>https://github.com/dfangx/dfangtoo-overlay</homepage>
+    <owner>
+      <email />
+      <name>dfangx</name>
+    </owner>
+    <source type="git">https://github.com/dfangx/dfangtoo-overlay</source>
+  </repo>
+</repositories>
