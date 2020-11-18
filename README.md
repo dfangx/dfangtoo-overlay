@@ -6,3 +6,4 @@
 - app-misc/wyrd
 - dev-lang/ocaml
 - dev-ml/ocaml-curses
+- dev-util/tree-sitter
