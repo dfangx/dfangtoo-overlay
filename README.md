@@ -7,3 +7,4 @@
 - dev-lang/ocaml
 - dev-ml/ocaml-curses
 - dev-util/tree-sitter
+- dev-python/keras
