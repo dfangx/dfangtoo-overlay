@@ -21,7 +21,7 @@ dev-python/six
 dev-python/kitchen
 dev-python/requests"
 
-S="${WORKDIR}/${PN}-v${PV}"
+S="${WORKDIR}/${PN}-${PV}"
 
 src_prepare() {
 	distutils-r1_src_prepare
