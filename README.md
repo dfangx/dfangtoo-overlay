@@ -8,3 +8,4 @@
 - dev-ml/ocaml-curses
 - dev-util/tree-sitter
 - dev-python/keras
+- net-misc/ttrv
