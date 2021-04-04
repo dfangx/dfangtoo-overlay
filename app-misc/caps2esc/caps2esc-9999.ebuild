@@ -14,5 +14,5 @@ IUSE=
 
 BDEPEND="dev-util/cmake"
 
-EGIT_REPO_URI="git@gitlab.com:interception/linux/plugins/caps2esc.git"
+EGIT_REPO_URI="https://gitlab.com/interception/linux/plugins/caps2esc.git"
 
