@@ -13,6 +13,7 @@ KEYWORDS="~amd64"
 IUSE=
 
 BDEPEND="dev-util/cmake"
+RDEPEND="app-misc/interception-tools"
 
 EGIT_REPO_URI="https://gitlab.com/interception/linux/plugins/caps2esc.git"
 
