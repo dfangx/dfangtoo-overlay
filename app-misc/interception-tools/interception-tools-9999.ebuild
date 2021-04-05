@@ -13,7 +13,7 @@ KEYWORDS="~amd64"
 IUSE=
 
 BDEPEND="dev-util/cmake"
-RDEPEND="dev-cpp/yaml-cpp sys-libs/glibc dev-libs/libevdev dev-libs/libudev"
+RDEPEND="dev-cpp/yaml-cpp sys-libs/glibc dev-libs/libevdev virtual/libudev"
 
 EGIT_REPO_URI="https://gitlab.com/interception/linux/tools.git"
 
