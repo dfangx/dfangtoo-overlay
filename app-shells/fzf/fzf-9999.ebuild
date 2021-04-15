@@ -17,7 +17,7 @@ RDEPEND="fish-completion? ( app-shells/fish )
 	tmux? ( app-misc/tmux )"
 DOCS=( {CHANGELOG,README,README-VIM}.md )
 
-EGIT_REPO_URI="https://${EGO_PN}.git"
+EGIT_REPO_URI="https://github.com/junegunn/${PN}"
 
 src_unpack() {
 	git-r3_src_unpack
