@@ -61,7 +61,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 src_compile() {
-	FZF_VERSION=${PV} FZF_REVISION=${P} emake PREFIX="${EPREFIX}"/usr VERSION=${PV} REVISION=${MY_GIT_REV} bin/${PN}
+	FZF_VERSION=${PV} FZF_REVISION=tarball emake PREFIX="${EPREFIX}"/usr VERSION=${PV} REVISION=${MY_GIT_REV} bin/${PN}
 }
 
 src_install() {
