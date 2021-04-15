@@ -19,11 +19,11 @@ DOCS=( {CHANGELOG,README,README-VIM}.md )
 
 EGIT_REPO_URI="https://github.com/junegunn/${PN}"
 
-# src_unpack() {
-# 	git-r3_src_unpack
-# 	mkdir "${S}"/vendor || die "mkdir failed"
-# 	go-module_live_vendor
-# }
+src_unpack() {
+	git-r3_src_unpack
+	# mkdir "${S}"/vendor || die "mkdir failed"
+	# go-module_live_vendor
+}
 
 src_compile() {
 	emake PREFIX="${EPREFIX}"/usr VERSION=${PV} bin/${PN}
