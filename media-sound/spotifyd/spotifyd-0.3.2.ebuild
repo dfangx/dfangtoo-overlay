@@ -369,10 +369,42 @@ SRC_URI="$(cargo_crate_uris ${CRATES})"
 RESTRICT="mirror"
 # License set may be more restrictive as OR is not respected
 # use cargo-license for a more accurate license picture
-LICENSE="0BSD Apache-2.0 Apache-2.0 WITH LLVM-exception BSD-2-Clause BSD-3-Clause BSL-1.0 GPL-3.0-only ISC MIT MPL-2.0 Unlicense Zlib"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
+IUSE="alsa dbus libressl portaudio pulseaudio rodio"
+REQUIRED_USE="|| ( alsa portaudio pulseaudio rodio )"
 
-DEPEND=""
-RDEPEND=""
+RDEPEND="
+alsa? ( media-libs/alsa-lib )
+dbus? ( sys-apps/dbus )
+!libressl? ( dev-libs/openssl:0= )
+libressl? ( dev-libs/libressl:0= )
+portaudio? ( media-libs/portaudio )
+pulseaudio? ( media-sound/pulseaudio )
+"
+DEPEND="${RDEPEND}"
+
+src_configure() {
+	myfeatures=(
+		$(usex alsa alsa_backend "")
+		$(usex dbus "dbus_keyring dbus_mpris" "")
+		$(usex portaudio portaudio_backend "")
+		$(usex pulseaudio pulseaudio_backend "")
+		$(usex rodio rodio_backend "")
+	)
+}
+
+src_compile() {
+	cargo_src_compile ${myfeatures:+--features "${myfeatures[*]}"} --no-default-features
+}
+
+src_install() {
+	cargo_src_install ${myfeatures:+--features "${myfeatures[*]}"} --no-default-features
+
+	keepdir /etc/xdg/spotifyd
+}
+
+src_test() {
+	cargo_src_test ${myfeatures:+--features "${myfeatures[*]}"} --no-default-features
+}
