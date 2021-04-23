@@ -365,7 +365,9 @@ DESCRIPTION="A Spotify daemon"
 # Double check the homepage as the cargo_metadata crate
 # does not provide this value so instead repository is used
 HOMEPAGE="https://github.com/Spotifyd/spotifyd"
-SRC_URI="$(cargo_crate_uris ${CRATES})"
+SRC_URI="
+https://github.com/Spotifyd/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+$(cargo_crate_uris ${CRATES})"
 RESTRICT="mirror"
 # License set may be more restrictive as OR is not respected
 # use cargo-license for a more accurate license picture
