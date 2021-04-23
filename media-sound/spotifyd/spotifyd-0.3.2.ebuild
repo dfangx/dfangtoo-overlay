@@ -66,6 +66,7 @@ darling-0.9.0
 darling_core-0.9.0
 darling_macro-0.9.0
 dbus-0.6.5
+dbus-tokio-0.2.1
 derefable-0.1.0
 derive_builder-0.7.2
 derive_builder_core-0.5.0
