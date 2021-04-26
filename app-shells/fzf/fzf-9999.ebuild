@@ -66,7 +66,7 @@ src_unpack(){
 }
 
 src_install() {
-	dobin fzf
+	dobin bin/fzf
 	einstalldocs
 
 	doman man/man1/fzf.1
