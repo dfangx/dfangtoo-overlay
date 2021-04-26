@@ -48,11 +48,62 @@ EGO_SUM=(
 go-module_set_globals
 EGIT_REPO_URI="https://github.com/junegunn/fzf"
 SRC_URI="${EGO_SUM_SRC_URI}"
+
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
+IUSE="fish-completion neovim tmux vim"
+
+RDEPEND="fish-completion? ( app-shells/fish )
+	vim? ( app-editors/vim )
+	tmux? ( app-misc/tmux )"
+
+DOCS=( {CHANGELOG,README,README-VIM}.md )
 
 src_unpack(){
 	git-r3_src_unpack
 	go-module_src_unpack
+}
+
+src_install() {
+	dobin fzf
+	einstalldocs
+
+	doman man/man1/fzf.1
+
+	if use tmux ; then
+		dobin bin/fzf-tmux
+		doman man/man1/fzf-tmux.1
+	fi
+
+	insinto /usr/share/fzf
+	doins shell/completion.bash shell/key-bindings.bash \
+		shell/completion.zsh shell/key-bindings.zsh
+
+	if use fish-completion ; then
+		insinto /usr/share/fish/functions/
+		newins shell/key-bindings.fish fzf.fish
+	fi
+
+	if use neovim ; then
+		insinto /usr/share/nvim/runtime/plugin
+		doins plugin/fzf.vim
+	fi
+
+	if use vim ; then
+		insinto /usr/share/vim/vimfiles/plugin
+		doins plugin/fzf.vim
+	fi
+}
+
+pkg_postinst() {
+	go-module_pkg_postinst
+	if has_version app-shells/bash-completion ; then
+		einfo "You may source files in /usr/share/fzf from your .bashrc"
+		einfo "to get completion for fzf"
+	fi
+	if has_version app-shells/zsh-completions ; then
+		einfo "You may source files in /usr/share/fzf from your .zshrc"
+		einfo "to get completion for fzf"
+	fi
 }
