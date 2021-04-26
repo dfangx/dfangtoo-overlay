@@ -65,6 +65,10 @@ src_unpack(){
 	go-module_src_unpack
 }
 
+src_compile() {
+	emake PREFIX="${EPREFIX}"/usr bin/${PN}
+}
+
 src_install() {
 	dobin bin/fzf
 	einstalldocs
