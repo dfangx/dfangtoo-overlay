@@ -17,3 +17,6 @@ RDEPEND="dev-cpp/yaml-cpp sys-libs/glibc dev-libs/libevdev virtual/libudev"
 
 EGIT_REPO_URI="https://gitlab.com/interception/linux/tools.git"
 
+PATCHES=(
+	"${FILESDIR}/interception-tools-${PV}-cmakelists.patch"
+)

@@ -1,0 +1,27 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index bda9e62..44b222e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -10,10 +10,10 @@ target_include_directories(udevmon PRIVATE "/usr/include/libevdev-1.0")
+ target_compile_options(udevmon PRIVATE -Wall -Wextra -pedantic -std=c++11)
+ target_link_libraries(udevmon evdev udev yaml-cpp)
+ 
+-add_executable(intercept intercept.c)
+-target_include_directories(intercept PRIVATE "/usr/include/libevdev-1.0")
+-target_compile_options(intercept PRIVATE -Wall -Wextra)
+-target_link_libraries(intercept evdev)
++add_executable(intercept-bin intercept.c)
++target_include_directories(intercept-bin PRIVATE "/usr/include/libevdev-1.0")
++target_compile_options(intercept-bin PRIVATE -Wall -Wextra)
++target_link_libraries(intercept-bin evdev)
+ 
+ add_executable(uinput uinput.cpp)
+ target_include_directories(uinput PRIVATE "/usr/include/libevdev-1.0")
+@@ -26,6 +26,6 @@ target_compile_options(mux PRIVATE -Wall -Wextra -pedantic -std=c++11 -DBOOST_DA
+ target_link_libraries(mux Threads::Threads rt)
+ 
+ install(TARGETS udevmon RUNTIME DESTINATION bin)
+-install(TARGETS intercept RUNTIME DESTINATION bin)
++install(TARGETS intercept-bin RUNTIME DESTINATION bin)
+ install(TARGETS uinput RUNTIME DESTINATION bin)
+ install(TARGETS mux RUNTIME DESTINATION bin)
